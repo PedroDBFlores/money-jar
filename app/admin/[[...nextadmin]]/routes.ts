@@ -1,5 +1,5 @@
 import { PrismaClient } from "@/node_modules/.prisma/client";
-import schema from "@/json-schema/json-schema.json";
+import schema from "@/prisma/json-schema/json-schema.json";
 import { createHandler } from "@premieroctet/next-admin/appHandler";
  
 const { run } = createHandler({
