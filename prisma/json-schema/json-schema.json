@@ -33,6 +33,12 @@
         "isAdmin": {
           "type": "boolean",
           "default": false
+        },
+        "movements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Movement"
+          }
         }
       },
       "required": [
@@ -57,8 +63,8 @@
           "type": "boolean",
           "default": true
         },
-        "userId": {
-          "type": "string"
+        "user": {
+          "$ref": "#/definitions/User"
         }
       },
       "required": [
