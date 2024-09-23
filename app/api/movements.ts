@@ -17,4 +17,25 @@ const getBalance = async (): Promise<number> => {
     return balance;
 }
 
-export { createMovement, getBalance }
+const getLatestContribuiters = async (): Promise<Array<string>> => {
+    const latestMovements = await prisma.movement.findMany({
+        orderBy: [
+            {
+                createdAt: 'desc'
+            }
+        ],
+        take: 100,
+        where: {
+            isCredit: true,
+        },
+        include: {
+            user: true,
+        }
+    });
+
+    return latestMovements
+        .map(movement => `${movement.user.name} contributed on ${movement.createdAt.toDateString()}`)
+}
+
+
+export { createMovement, getBalance, getLatestContribuiters }
