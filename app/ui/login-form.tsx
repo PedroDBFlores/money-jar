@@ -16,7 +16,10 @@ export default function LoginForm() {
     undefined,
   );
 
-  const [ isSignUp, setIsSignUp ] = useState(false);
+  /* eslint-disable */
+  const [ _, setIsSignUp ] = useState(false);
+  /* eslint-enable */
+
  
   return (
     <form action={formAction} className="space-y-3">
@@ -79,7 +82,7 @@ export default function LoginForm() {
           Log in 
         </button>
       <button className="mt-4 w-full" onClick={() => setIsSignUp(true)}>
-          Don't have an account? Sign up.
+          Don&apos;t have an account? Sign up.
         </button>
     </form>
   );
