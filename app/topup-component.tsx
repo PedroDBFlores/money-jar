@@ -19,20 +19,21 @@ function SelectAmount({amount, selected, onClick} : {amount: number, selected: b
 
 
 const TopUpComponent = () => {
-    const x = useSession();
     const  router = useRouter();
+    const x = useSession();
     const [ amount, setAmount ] = useState<number>(0);
     const isTopUpButtonEnabled = amount > 0;
 
-    const handleMovement = async () => {
+    const handleMovement = async (e) => {
+        e.preventDefault();
         await createMovement({
             userId: x.data?.userId,
             amount,
             isCredit: true,
         });
+        router.push("contribuiters");
         // x.update();
-        router.push("/contribuiters");
-        router.forward();
+        // router.forward();
     }
 
     return (
@@ -55,7 +56,7 @@ const TopUpComponent = () => {
             </div>
             <button
                 disabled={!isTopUpButtonEnabled}
-                onClick={async () => await handleMovement()}
+                onClick={async (e) => await handleMovement(e)}
                 className="bg-white text-black rounded-3xl px-16 py-2 justify-center border border-gray-300 bg-gradient-to-r from-purple to-mint py-2 text-white">Top-Up</button>
         </form>
     )
