@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { auth } from "./api/auth/[...nextauth]/route";
 import { SessionProvider } from "next-auth/react";
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -38,6 +38,7 @@ export default async function RootLayout({
           flex-col
           `}
       >
+        <SpeedInsights />
         <SessionProvider session={session}>{children}</SessionProvider>
         </body>
     </html>
