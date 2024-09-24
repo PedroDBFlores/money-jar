@@ -23,8 +23,12 @@ export default async function Home() {
             <button
               className="bg-white text-black rounded-3xl px-16 py-2 justify-center border border-gray-300 bg-gradient-to-r from-purple to-mint py-2 text-white">See contribuiters</button>
           </Link>
+          <Link href={"/withdrawals"}>
+            <button
+              className="bg-white text-black rounded-3xl px-16 py-2 justify-center border border-gray-300 bg-gradient-to-r from-purple to-mint py-2 text-white">See withdrawals</button>
+          </Link>
           {
-            true && (
+            isAdmin && (
               <Link href={"/withdraw"}>
                 <button
                   className="bg-white text-black rounded-3xl px-16 py-2 justify-center border border-gray-300 bg-gradient-to-r from-purple to-mint py-2 text-white">Withdraw</button>

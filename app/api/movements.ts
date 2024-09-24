@@ -20,7 +20,7 @@ const getBalance = async (): Promise<number> => {
 }
 
 const getLatestContribuiters = async (): Promise<Array<string>> => {
-    const latestMovements = await prisma.movement.findMany({
+    const latestContribuiters = await prisma.movement.findMany({
         orderBy: [
             {
                 createdAt: 'desc'
@@ -35,9 +35,29 @@ const getLatestContribuiters = async (): Promise<Array<string>> => {
         }
     });
 
-    return latestMovements
+    return latestContribuiters
         .map(movement => `${movement.user.name} contributed on ${movement.createdAt.toLocaleDateString()} with €${movement.amount}`)
 }
 
+const getLatestWithdrawals = async (): Promise<Array<string>> => {
+    const latestWithdrawals = await prisma.movement.findMany({
+        orderBy: [
+            {
+                createdAt: 'desc'
+            }
+        ],
+        take: 100,
+        where: {
+            isCredit: false,
+        },
+        include: {
+            user: true,
+        }
+    });
 
-export { createMovement, getBalance, getLatestContribuiters }
+    return latestWithdrawals
+        .map(movement => `${movement.user.name} withdrew on ${movement.createdAt.toLocaleDateString()} with €${movement.amount}`)
+}
+
+
+export { createMovement, getBalance, getLatestContribuiters, getLatestWithdrawals }
