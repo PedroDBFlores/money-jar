@@ -13,7 +13,9 @@ const config: Config = {
         'purple': "#5902B6",
         "mint": "#70C2BF",
         "pink": "#DA6CC6",
-        "form": "#DA6CC620"
+        "primary": "#5902B6",
+        "gray-900": "#464646",
+        "gray-400": "#9B9B9B"
         // background: "var(--background)",
         // foreground: "var(--foreground)",
         // nextadmin: {
