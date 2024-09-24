@@ -10,8 +10,24 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        'purple': "#5902B6",
+        "mint": "#70C2BF",
+        "pink": "#DA6CC6",
+        "form": "#DA6CC620"
+        // background: "var(--background)",
+        // foreground: "var(--foreground)",
+        // nextadmin: {
+        //   background: {
+        //     default: "var(--background)"
+        //   },
+        //   foreground: "var(--foreground)"
+        // },
+        // // Dark mode colors
+        // "dark-nextadmin": {
+        //   background: {
+        //     default: "var(--background)"
+        //   },
+        // }
       },
     },
   },

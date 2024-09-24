@@ -5,22 +5,22 @@ import {
   KeyIcon,
   ExclamationCircleIcon,
 } from '@heroicons/react/24/outline';
-import { ArrowRightIcon } from '@heroicons/react/20/solid';
 import { authenticate } from '@/app/lib/actions';
 import { useFormState } from 'react-dom';
+import { useState } from 'react';
  
 export default function LoginForm() {
+
   const [errorMessage, formAction, isPending] = useFormState(
     authenticate,
     undefined,
   );
+
+  const [ isSignUp, setIsSignUp ] = useState(false);
  
   return (
     <form action={formAction} className="space-y-3">
-      <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
-        <h1 className={`mb-3 text-2xl`}>
-          Please log in to continue.
-        </h1>
+      <div className="flex-1 rounded-lg">
         <div className="w-full">
           <div>
             <label
@@ -62,9 +62,6 @@ export default function LoginForm() {
             </div>
           </div>
         </div>
-        <button className="mt-4 w-full" aria-disabled={isPending}>
-          Log in <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
-        </button>
         <div
           className="flex h-8 items-end space-x-1"
           aria-live="polite"
@@ -78,6 +75,12 @@ export default function LoginForm() {
           )}
         </div>
       </div>
+      <button className="bg-white text-purple w-full rounded-3xl px-16 py-2" aria-disabled={isPending}>
+          Log in 
+        </button>
+      <button className="mt-4 w-full" onClick={() => setIsSignUp(true)}>
+          Don't have an account? Sign up.
+        </button>
     </form>
   );
 }

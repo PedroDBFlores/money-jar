@@ -18,5 +18,7 @@ export default async function AdminPage({
     /*options*/
   });
  
-  return <NextAdmin {...props}/>;
+  return (
+      <NextAdmin {...props} />
+  );
 }
