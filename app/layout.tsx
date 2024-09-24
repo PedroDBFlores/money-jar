@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import SessionProvider  from "@/app/providers/session-provider";
 import { auth } from "./api/auth/[...nextauth]/route";
+import { SessionProvider } from "next-auth/react";
 
 
 const geistSans = localFont({
@@ -26,8 +26,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const session = await auth() ;
-
-
   return (
     <html lang="en">
       <body
