@@ -1,6 +1,5 @@
 import LoginForm from '@/app/ui/login-form';
 import React from "react";
-import Header from '../ui/header';
 import Image from 'next/image';
 
 export default function LoginPage() {
