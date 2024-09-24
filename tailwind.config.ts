@@ -16,7 +16,7 @@ const config: Config = {
         "primary": "#5902B6",
         "gray-900": "#464646",
         "gray-400": "#9B9B9B",
-        "purple-100": "#5902B630",
+        "active": "#5902B630",
       },
       fontFamily: {
         'font-serif': "var(--serif)",
