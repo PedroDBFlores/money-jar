@@ -1,6 +1,5 @@
 import LoginForm from '@/app/ui/login-form';
 import React from "react";
-import Header from '../ui/header';
 
 export default function LoginPage() {
   return (

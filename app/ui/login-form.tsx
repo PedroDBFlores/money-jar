@@ -1,8 +1,6 @@
 'use client';
  
 import {
-  AtSymbolIcon,
-  KeyIcon,
   ExclamationCircleIcon,
 } from '@heroicons/react/24/outline';
 import { authenticate } from '@/app/lib/actions';
