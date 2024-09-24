@@ -10,7 +10,7 @@ function SelectAmount({amount, selected, onClick} : {amount: number, selected: b
 
   return (
   <div 
-      className={"bg-white w-full w-1/2 text-gray-400 border flex items-strech justify-center p-2 rounded" + (selected && " border-purple bg-active ")}
+      className={"bg-white w-full w-1/2 text-gray-400 border flex items-strech justify-center p-2 rounded" + (selected && " bg-purple border-purple text-white opacity-20 ")}
       onClick={() => onClick(amount)}
       >
   €{amount}
