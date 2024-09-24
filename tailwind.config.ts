@@ -29,6 +29,9 @@ const config: Config = {
         //   },
         // }
       },
+      fontFamily: {
+        'font-serif': "var(--serif)",
+      },
     },
   },
   plugins: [],

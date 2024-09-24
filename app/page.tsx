@@ -4,7 +4,7 @@ import Header from "./ui/header";
 export default function Home() {
   return (
     <div className="bg-gradient-to-b from-purple to-mint grid grid-rows-[2px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 font-[family-name:var(--font-geist-sans)]">
-      <Header title="Lunch Queen" />
+      <h1 className='font-serif text-white text-center text-4xl'>Lunch Queen</h1>
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         
         <div className="grid grid-rows-1">

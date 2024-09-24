@@ -1,9 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 :root {
   --purple-gradient: linear-gradient(#5902B6, #70C2BF);
+  --serif: "Playfair Display"
   /* --background: linear-gradient(#5902B6, #70C2BF);
   --foreground: #fff; */
 }
