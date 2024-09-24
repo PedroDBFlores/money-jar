@@ -1,17 +1,12 @@
 import Link from "next/link";
-import Header from "./ui/header";
-import { createMovement, getBalance, getLatestContribuiters } from "./api/movements";
-import { get } from "http";
-import { getServerSideProps } from "next/dist/build/templates/pages";
-import { useState } from "react";
+import { getBalance } from "./api/movements";
 import { TopUpComponent } from "./topup-component";
 import { auth } from "./api/auth/[...nextauth]/route";
-import { LatestContribuiters } from "./latest-contribuiters";
 
 export default async function Home() {
   const balance = await getBalance();
-  const contribuiters = await getLatestContribuiters();
   const formattedValue = `€ ${balance}`
+  const { isAdmin } = await auth();
 
   return (
     <div className="flex flex-col items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
@@ -23,8 +18,21 @@ export default async function Home() {
           <p className="text-3xl font-bold text-primary ">{formattedValue}</p>
           <p className="text-gray-900"> Money Jar Balance</p>
         </div>
-        <LatestContribuiters contribuiters={contribuiters} />
-        <TopUpComponent/>
+        <div>
+          <Link href={"/contribuiters"}>
+            <button
+              className="bg-white text-black rounded-3xl px-16 py-2 justify-center border border-gray-300 bg-gradient-to-r from-purple to-mint py-2 text-white">See contribuiters</button>
+          </Link>
+          {
+            true && (
+              <Link href={"/withdraw"}>
+                <button
+                  className="bg-white text-black rounded-3xl px-16 py-2 justify-center border border-gray-300 bg-gradient-to-r from-purple to-mint py-2 text-white">Withdraw</button>
+              </Link>
+            )
+          }
+        </div>
+        <TopUpComponent />
       </main>
     </div>
   );

@@ -52,14 +52,6 @@ const TopUpComponent = () => {
                 disabled={!isTopUpButtonEnabled}
                 onClick={async () => await handleMovement()}
                 className="bg-white text-black rounded-3xl px-16 py-2 justify-center border border-gray-300 bg-gradient-to-r from-purple to-mint py-2 text-white">Top-Up</button>
-            {/* <div className="flex">
-                <Link 
-                    className="w-1/2 flex justify-center border border-gray-300 bg-white text-purple py-2" 
-                    href="/">
-                        Back
-                </Link>
-                <button className="w-1/2 flex justify-center border border-gray-300 bg-gradient-to-r from-purple to-mint py-2 text-white">Done</button>
-            </div> */}
         </form>
     )
 };
