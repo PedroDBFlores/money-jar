@@ -16,7 +16,10 @@ export default function LoginForm() {
     undefined,
   );
 
-  const [ isSignUp, setIsSignUp ] = useState(false);
+  /* eslint-disable */
+  const [ _, setIsSignUp ] = useState(false);
+  /* eslint-enable */
+
  
   return (
     <form action={formAction} className="space-y-3">
@@ -64,8 +67,8 @@ export default function LoginForm() {
       <button className="bg-white text-purple font-bold w-full rounded-3xl px-16 py-2" aria-disabled={isPending}>
           Log in 
         </button>
-      <button className="text-white mt-4 w-full" onClick={() => setIsSignUp(true)}>
-          Don't have an account? Sign up.
+      <button className="mt-4 w-full" onClick={() => setIsSignUp(true)}>
+          Don&apos;t have an account? Sign up.
         </button>
     </form>
   );

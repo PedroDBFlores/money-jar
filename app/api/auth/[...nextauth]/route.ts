@@ -1,27 +1,11 @@
 import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
-import { authConfig } from './auth.config';
 import { z } from 'zod';
 import bcrypt from 'bcrypt';
-import { PrismaClient, User } from '@prisma/client';
+import { getUser } from '../../users';
+import { authConfig } from '@/auth.config';
 
-const prisma = new PrismaClient()
-
-async function getUser(email: string): Promise<User | undefined> {
-  try {
-    const user = prisma.user.findFirstOrThrow({
-      where: {
-        email,
-      }
-    });
-    return user;
-  } catch (error) {
-    console.error('Failed to fetch user:', error);
-    throw new Error('Failed to fetch user.');
-  }
-}
-
-export const { auth, signIn, signOut } = NextAuth({
+export const options = {
   ...authConfig,
   providers: [
     Credentials({
@@ -42,6 +26,15 @@ export const { auth, signIn, signOut } = NextAuth({
         console.log('Invalid credentials');
         return null;
       },
+      credentials: {
+        username: { label: "Username", type: "text", placeholder: "jsmith" },
+        password: { label: "Password", type: "password" }
+      },
     }),
   ],
-});
+};
+
+export const { auth, signIn, signOut, handlers: { GET, POST } } = NextAuth(options);
+
+
+
