@@ -1,11 +1,12 @@
 import Link from "next/link";
 import Header from "./ui/header";
 import { getLatestContribuiters, getBalance } from "./api/movements";
+import { get } from "http";
 
 export default async function Home() {
-  const x = await getLatestContribuiters()
+  const balance = await getBalance();
 
-  console.log(await getBalance())
+  const formattedValue = `€ ${balance}`
 
   return (
     <div className="flex flex-col items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
@@ -14,7 +15,7 @@ export default async function Home() {
       <main className="w-full bg-gray-100 h-full flex flex-col gap-8 row-start-2 items-center justify-between p-5">
         
         <div className="flex flex-col items-center justify-center min-h-44 bg-white w-full rounded gap-4 font-slim">
-          <p className="text-3xl font-bold text-primary ">€ 59.50 </p>
+          <p className="text-3xl font-bold text-primary ">{formattedValue}</p>
           <p className="text-gray-900"> Money Jar Balance</p>
         </div>
 
