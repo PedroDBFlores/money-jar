@@ -3,6 +3,7 @@
 import { useSession } from "next-auth/react";
 import { createMovement } from "./api/movements";
 import { Dispatch, SetStateAction, useState } from "react";
+import { useRouter } from "next/navigation";
 
 function SelectAmount({amount, selected, onClick} : {amount: number, selected: boolean;  onClick: Dispatch<SetStateAction<number>> }){
   // const [ selected, setSelected ] = useState(false);
@@ -19,6 +20,7 @@ function SelectAmount({amount, selected, onClick} : {amount: number, selected: b
 
 const TopUpComponent = () => {
     const x = useSession();
+    const  router = useRouter();
     const [ amount, setAmount ] = useState<number>(0);
     const isTopUpButtonEnabled = amount > 0;
 
@@ -28,6 +30,9 @@ const TopUpComponent = () => {
             amount,
             isCredit: true,
         });
+        // x.update();
+        router.push("/contribuiters");
+        router.forward();
     }
 
     return (
