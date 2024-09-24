@@ -16,21 +16,7 @@ const config: Config = {
         "primary": "#5902B6",
         "gray-900": "#464646",
         "gray-400": "#9B9B9B",
-        "input": "#00000020",
-        // background: "var(--background)",
-        // foreground: "var(--foreground)",
-        // nextadmin: {
-        //   background: {
-        //     default: "var(--background)"
-        //   },
-        //   foreground: "var(--foreground)"
-        // },
-        // // Dark mode colors
-        // "dark-nextadmin": {
-        //   background: {
-        //     default: "var(--background)"
-        //   },
-        // }
+        "purple-100": "#5902B630",
       },
       fontFamily: {
         'font-serif': "var(--serif)",

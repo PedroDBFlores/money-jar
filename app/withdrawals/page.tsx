@@ -1,7 +1,5 @@
-
-import { redirect } from 'next/navigation'
 import Link from "next/link";
-import { getLatestContribuiters, getLatestWithdrawals } from "../api/movements";
+import { getLatestWithdrawals } from "../api/movements";
 
 const LatestWithdrawals = async () => {
     const withdrawals = await getLatestWithdrawals();
