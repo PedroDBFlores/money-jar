@@ -1,12 +1,11 @@
 import Link from "next/link";
 import { getBalance } from "./api/movements";
 import { TopUpComponent } from "./topup-component";
-import { auth } from "./api/auth/[...nextauth]/route";
+import Withdraw from "./withdraw/page";
 
 export default async function Home() {
   const balance = await getBalance();
   const formattedValue = `€ ${balance}`
-  const { isAdmin } = await auth();
 
   return (
     <div className="flex flex-col items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
@@ -18,14 +17,6 @@ export default async function Home() {
           <Link href={"/withdrawals"} className="bg-white text-black w-full justify-center items-center text-center border border-gray-300 to-mint py-2 text-gray-900">
             See withdrawals
           </Link>
-          {
-            isAdmin && (
-              <Link href={"/withdraw"}
-                  className="bg-white w-full justify-center items-center text-center border border-gray-300 py-2 bg-gray-100 text-grey-900">
-                    Withdraw
-              </Link>
-            )
-          }
         </div>
       <main className="w-full bg-gray-100 h-full flex flex-col gap-8 row-start-2 items-center justify-between p-5">
         <div className="flex flex-col items-center justify-center min-h-44 bg-white w-full rounded gap-4 font-slim">
@@ -33,6 +24,7 @@ export default async function Home() {
           <p className="text-gray-900"> Money Jar Balance</p>
         </div>
         <TopUpComponent />
+        {<Withdraw />}
       </main>
     </div>
   );

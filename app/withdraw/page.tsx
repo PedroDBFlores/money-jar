@@ -16,13 +16,12 @@ const Withdraw = () => {
             amount,
             isCredit: false,
         });
+        x.update();
         navigateToRoot()
     }
 
     return (
-        <div className="flex flex-col items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
-            {/* <Header title="Balance" /> */}
-            <div className="row-start-1 bg-gradient-to-r from-purple to-mint w-full text-white text-center pt-4 pb-2">Contribuiters</div>
+        x.data?.isAdmin && 
             <form className="flex flex-col gap-4 w-full">
                 <div className="flex flex-col gap-4">
                     <h2 className="text-gray-900 text-sm font-bold">Withdraw</h2>
@@ -39,7 +38,6 @@ const Withdraw = () => {
                     onClick={async () => await handleMovement()}
                     className="bg-white text-black rounded-3xl px-16 py-2 justify-center border border-gray-300 bg-gradient-to-r from-purple to-mint py-2 text-white">Withdraw</button>
             </form>
-        </div>
     )
 };
 
