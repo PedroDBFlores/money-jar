@@ -24,11 +24,11 @@ export default function LoginForm() {
   return (
     <form action={formAction} className="space-y-3">
       <div className="flex-1 rounded-lg">
-        <div className="w-full">
+        <div className="w-full space-y-6">
           <div>
             <div className="relative">
               <input
-                className="bg-white text-purple text-center w-full rounded-3xl px-16 py-3"
+                className="bg-input font-sans text-white text-center w-full rounded-3xl px-16 py-3 placeholder:text-white"
                 id="email"
                 type="email"
                 name="email"
@@ -40,7 +40,7 @@ export default function LoginForm() {
           <div className="mt-4">
             <div className="relative">
               <input
-                className="bg-white text-purple text-center w-full rounded-3xl px-16 py-3"
+                className="bg-input font-sants text-white text-center w-full rounded-3xl px-16 py-3 placeholder:text-white"
                 id="password"
                 type="password"
                 name="password"
@@ -64,12 +64,12 @@ export default function LoginForm() {
           )}
         </div>
       </div>
-      <button className="bg-white text-purple font-bold w-full rounded-3xl px-16 py-2" aria-disabled={isPending}>
+      <button className="font-sans bg-white text-purple font-bold w-full rounded-3xl px-16 py-2" aria-disabled={isPending}>
           Log in 
-        </button>
-      <button className="mt-4 w-full" onClick={() => setIsSignUp(true)}>
-          Don&apos;t have an account? Sign up.
-        </button>
+      </button>
+      <button className="mt-4 w-full text-white" onClick={() => setIsSignUp(true)}>
+          Don&apos;t have an account? <b>Sign up.</b>
+      </button>
     </form>
   );
 }
