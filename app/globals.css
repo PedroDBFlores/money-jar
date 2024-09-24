@@ -6,8 +6,6 @@
 :root {
   --purple-gradient: linear-gradient(#5902B6, #70C2BF);
   --serif: "Playfair Display"
-  /* --background: linear-gradient(#5902B6, #70C2BF);
-  --foreground: #fff; */
 }
 
 /* @media (prefers-color-scheme: light) {
