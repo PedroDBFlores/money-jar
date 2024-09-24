@@ -28,7 +28,7 @@ export const authConfig: NextAuthConfig = {
       return true;
     },
     redirect: ({ url, baseUrl }) => {
-      return Promise.resolve('http://localhost:3000')
+      return Promise.resolve(baseUrl)
     },
     async session({ session }) {
       const user = await getUser(session?.user?.email);
