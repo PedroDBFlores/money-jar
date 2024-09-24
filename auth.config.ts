@@ -1,5 +1,6 @@
 import { sql } from '@vercel/postgres';
 import { User } from '@prisma/client';
+import { NextAuthConfig } from 'next-auth';
 
 async function getUser(email: string): Promise<User | undefined> {
   try {
@@ -11,16 +12,23 @@ async function getUser(email: string): Promise<User | undefined> {
   }
 }
 
-export const authConfig = {
+export const authConfig: NextAuthConfig = {
   pages: {
     signIn: '/login',
   },
   callbacks: {
-    authorized({ auth, request: { nextUrl } }) {
+    authorized({ auth, request}) {
       const isLoggedIn = !!auth?.user;
-      console.log(isLoggedIn)
-      if (isLoggedIn) return true;
+      if (isLoggedIn) {
+        return true;
+      }
       return false; // Redirect unauthenticated users to login page
+    },
+    signIn: ({user}) => {
+      return true;
+    },
+    redirect: ({ url, baseUrl }) => {
+      return Promise.resolve('http://localhost:3000')
     },
     async session({ session }) {
       const user = await getUser(session?.user?.email);
