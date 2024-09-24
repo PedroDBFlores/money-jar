@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import SessionProvider  from "@/app/providers/session-provider";
+import { auth } from "./api/auth/[...nextauth]/route";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -17,11 +20,14 @@ export const metadata: Metadata = {
   title: "Lunch Queen"
 };
 
-export default function RootLayout({
-  children
+export default async function RootLayout({
+  children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth() ;
+
+
   return (
     <html lang="en">
       <body
@@ -34,8 +40,8 @@ export default function RootLayout({
           flex-col
           `}
       >
-          {children}
-      </body>
+        <SessionProvider session={session}>{children}</SessionProvider>
+        </body>
     </html>
   );
 }
