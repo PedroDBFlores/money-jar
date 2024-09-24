@@ -1,13 +1,25 @@
 'use client'
 
 import { useSession } from "next-auth/react";
-import { useState } from "react";
 import { createMovement } from "./api/movements";
+import { Dispatch, SetStateAction, useState } from "react";
+
+function SelectAmount({amount, selected, onClick} : {amount: number, selected: boolean;  onClick: Dispatch<SetStateAction<number>> }){
+  // const [ selected, setSelected ] = useState(false);
+
+  return (
+  <div 
+      className={"bg-white w-full w-1/2 text-gray-400 border flex items-strech justify-center p-2 rounded" + (selected && " border-purple bg-purple-100 ")}
+      onClick={() => onClick(amount)}
+      >
+  €{amount}
+</div>)
+}
 
 
 const TopUpComponent = () => {
     const x = useSession();
-    const [amount, setAmount] = useState<number>(0);
+    const [ amount, setAmount ] = useState<number>(0);
     const isTopUpButtonEnabled = amount > 0;
 
     const handleMovement = async () => {
@@ -23,22 +35,10 @@ const TopUpComponent = () => {
             <div className="flex flex-col gap-4">
                 <h2 className="text-gray-900 text-sm font-bold">Top Up</h2>
                 <div className="cursor-pointer grid grid-rows-2 grid-cols-2 place-items-center place-content-center gap-2 mb-4">
-                    <div onClick={() => setAmount(5)}
-                        className="bg-white w-full w-1/2 text-gray-400 border flex items-strech justify-center p-2 rounded">
-                        €5
-                    </div>
-                    <div onClick={() => setAmount(10)}
-                        className="bg-white w-full w-1/2 text-gray-400 flex items-strech justify-center p-2 rounded">
-                        €10
-                    </div>
-                    <div onClick={() => setAmount(20)}
-                        className="bg-white w-full w-1/2 text-gray-400 flex items-strech justify-center p-2 rounded">
-                        €20
-                    </div>
-                    <div onClick={() => setAmount(50)}
-                        className="bg-white w-full w-1/2 text-gray-400 flex items-strech justify-center p-2 rounded">
-                        €50
-                    </div>
+                    <SelectAmount amount={5} selected={amount === 5} onClick={setAmount}/>
+                    <SelectAmount amount={10} selected={amount === 10} onClick={setAmount}/>
+                    <SelectAmount amount={20} selected={amount === 20} onClick={setAmount}/>
+                    <SelectAmount amount={30} selected={amount === 30} onClick={setAmount}/>
                 </div>
                 <input
                     type="number"
