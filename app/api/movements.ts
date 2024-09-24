@@ -1,9 +1,11 @@
+'use server'
+
 import { Movement, PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
 const createMovement = async (input: Movement) =>
-    prisma.movement.create({
+    await prisma.movement.create({
         data: input,
     });
 

@@ -34,6 +34,7 @@ export const authConfig: NextAuthConfig = {
       const user = await getUser(session?.user?.email);
       if (user) {
         session.isAdmin = user.isAdmin;
+        session.userId = user.id;
       }
       return session
     },
