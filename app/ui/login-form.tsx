@@ -20,7 +20,7 @@ export default function LoginForm() {
 
  
   return (
-    <form action={formAction} className="space-y-3">
+    <form action={formAction} className="space-y-3" autoComplete="off">
       <div className="flex-1 rounded-lg">
         <div className="w-full space-y-6">
           <div>

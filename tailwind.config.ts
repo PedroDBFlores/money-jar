@@ -17,6 +17,7 @@ const config: Config = {
         "gray-900": "#464646",
         "gray-400": "#9B9B9B",
         "purple-100": "#5902B630",
+        "input": "#00000020",
       },
       fontFamily: {
         'font-serif': "var(--serif)",
