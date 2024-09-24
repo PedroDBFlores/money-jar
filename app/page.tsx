@@ -1,14 +1,16 @@
 import Link from "next/link";
 import Header from "./ui/header";
-import { createMovement, getBalance } from "./api/movements";
+import { createMovement, getBalance, getLatestContribuiters } from "./api/movements";
 import { get } from "http";
 import { getServerSideProps } from "next/dist/build/templates/pages";
 import { useState } from "react";
 import { TopUpComponent } from "./topup-component";
 import { auth } from "./api/auth/[...nextauth]/route";
+import { LatestContribuiters } from "./latest-contribuiters";
 
 export default async function Home() {
   const balance = await getBalance();
+  const contribuiters = await getLatestContribuiters();
   const formattedValue = `€ ${balance}`
 
   return (
@@ -21,7 +23,7 @@ export default async function Home() {
           <p className="text-3xl font-bold text-primary ">{formattedValue}</p>
           <p className="text-gray-900"> Money Jar Balance</p>
         </div>
-
+        <LatestContribuiters contribuiters={contribuiters} />
         <TopUpComponent/>
       </main>
     </div>

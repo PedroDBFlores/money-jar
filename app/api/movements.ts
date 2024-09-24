@@ -36,7 +36,7 @@ const getLatestContribuiters = async (): Promise<Array<string>> => {
     });
 
     return latestMovements
-        .map(movement => `${movement.user.name} contributed on ${movement.createdAt.toDateString()}`)
+        .map(movement => `${movement.user.name} contributed on ${movement.createdAt.toLocaleDateString()} with €${movement.amount}`)
 }
 
 
